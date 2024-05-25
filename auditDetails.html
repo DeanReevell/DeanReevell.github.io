@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Audit Details</h1>
+    </header>
+    <main>
+    <button id="saveAsPdf">Save as PDF</button>
+    <button type="button" onclick="goToDashboard()">Back to Dashboard</button>
+    <button id="addFindingButton" type="button" onclick="showAddFindingModal()">Add New Finding</button>
+    
+   
+
+        <section id="auditDetails">
+            <!-- Audit details will be populated dynamically using JavaScript -->
+        </section>
+    </main>
+
+    
+
+<!-- Add Finding Modal -->
+<div id="addFindingModal" class="modal">
+    <div class="modal-content">
+        <span class="closeAddFinding">&times;</span>
+        <h2>Add New Finding</h2>
+        <form id="addFindingForm">
+            <label for="newLocation">Location:</label>
+            <input type="text" id="newLocation" name="location" required>
+
+            <label for="newArea">Area:</label>
+            <select id="newArea" name="area" required>
+                <option value="">Select Area</option>
+                <option value="Entrance">Entrance</option>
+                <option value="Reception Area">Reception Area</option>
+                <option value="Office Cubicles">Office Cubicles</option>
+                <option value="Conference Room">Conference Room</option>
+                <option value="Meeting Room">Meeting Room</option>
+                <option value="Break Room">Break Room</option>
+                <option value="Restrooms">Restrooms</option>
+                <option value="Elevator">Elevator</option>
+                <option value="Stairs">Stairs</option>
+                <option value="Hallways">Hallways</option>
+                <option value="Parking Lot">Parking Lot</option>
+                <option value="Exterior">Exterior</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="newFinding">Finding:</label>
+            <select id="newFinding" name="finding" required>
+                <option value="">Select Finding</option>
+                <option value="General">General</option>
+                <option value="Signage">Signage</option>
+                <option value="Parking">Parking</option>
+                <option value="Internal and External Circulation">Internal and External Circulation</option>
+                <option value="Floors and Ground Surfaces">Floors and Ground Surfaces</option>
+                <option value="Doorways, Doors and Handles">Doorways, Doors and Handles</option>
+                <option value="Changes in Level">Changes in Level</option>
+                <option value="Ramps">Ramps</option>
+                <option value="Stairways">Stairways</option>
+                <option value="Handrails">Handrails</option>
+                <option value="Lifts">Lifts</option>
+                <option value="Toilet Facilities">Toilet Facilities</option>
+                <option value="Auditoriums, Halls and Grandstands">Auditoriums, Halls and Grandstands</option>
+                <option value="Controls, Switches and Power Points">Controls, Switches and Power Points</option>
+                <option value="Warning Signals">Warning Signals</option>
+                <option value="Lighting">Lighting</option>
+            </select>
+
+            <label for="newComment">Comment:</label>
+            <textarea id="newComment" name="comment"></textarea>
+
+            <label for="newPicture">Picture:</label>
+            <input type="file" id="newPicture" name="picture" accept="image/*">
+
+            <label for="newScore">Score:</label>
+            <select id="newScore" name="score" required>
+                <option value="">Select Score</option>
+                <option value="NA">NA</option>
+                <option value="Fully Compliant">Fully Compliant</option>
+                <option value="Partially Compliant">Partially Compliant</option>
+                <option value="Non-Compliant">Non-Compliant</option>
+            </select>
+
+            <label for="newRecommendation">Recommendation:</label>
+            <textarea id="newRecommendation" name="recommendation" required></textarea>
+            
+            <button type="submit">Add Finding</button>
+        </form>
+    </div>
+</div>
+
+
+  <!-- Edit Inspection Modal -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit Inspection</h2>
+        <form id="editInspectionForm">
+            <label for="editLocation">Location:</label>
+            <input type="text" id="editLocation" name="location" required>
+            
+            <label for="editArea">Area:</label>
+            <select id="editArea" name="area" required>
+                <option value="Entrance">Entrance</option>
+                <option value="Reception Area">Reception Area</option>
+                <option value="Office Cubicles">Office Cubicles</option>
+                <option value="Conference Room">Conference Room</option>
+                <option value="Meeting Room">Meeting Room</option>
+                <option value="Break Room">Break Room</option>
+                <option value="Restrooms">Restrooms</option>
+                <option value="Elevator">Elevator</option>
+                <option value="Stairs">Stairs</option>
+                <option value="Hallways">Hallways</option>
+                <option value="Parking Lot">Parking Lot</option>
+                <option value="Exterior">Exterior</option>
+                <option value="Other">Other</option>
+            </select>
+            
+            <label for="editFinding">Finding:</label>
+            <select id="editFinding" name="finding" required>
+                <option value="General">General</option>
+                <option value="Signage">Signage</option>
+                <option value="Parking">Parking</option>
+                <option value="Internal and External Circulation">Internal and External Circulation</option>
+                <option value="Floors and Ground Surfaces">Floors and Ground Surfaces</option>
+                <option value="Doorways, Doors and Handles">Doorways, Doors and Handles</option>
+                <option value="Changes in Level">Changes in Level</option>
+                <option value="Ramps">Ramps</option>
+                <option value="Stairways">Stairways</option>
+                <option value="Handrails">Handrails</option>
+                <option value="Lifts">Lifts</option>
+                <option value="Toilet Facilities">Toilet Facilities</option>
+                <option value="Auditoriums, Halls and Grandstands">Auditoriums, Halls and Grandstands</option>
+                <option value="Controls, Switches and Power Points">Controls, Switches and Power Points</option>
+                <option value="Warning Signals">Warning Signals</option>
+                <option value="Lighting">Lighting</option>
+            </select>
+            
+            <label for="editComment">Comment:</label>
+            <textarea id="editComment" name="comment"></textarea>
+            
+            <label for="editScore">Score:</label>
+            <select id="editScore" name="score" required>
+                <option value="NA">NA</option>
+                <option value="Fully Compliant">Fully Compliant</option>
+                <option value="Partially Compliant">Partially Compliant</option>
+                <option value="Non-Compliant">Non-Compliant</option>
+            </select>
+            
+            <label for="editRecommendation">Recommendation:</label>
+            <textarea id="editRecommendation" name="recommendation" required></textarea>
+            
+            <label for="editPicture">Picture:</label>
+            <input type="file" id="editPicture" name="picture" accept="image/*">
+            
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+    <script src="auditDetails.js"></script>
+</body>
+</html>

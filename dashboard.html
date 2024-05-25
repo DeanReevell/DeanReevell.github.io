@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Inspection Dashboard</h1>
+    </header>
+    <main>
+        <section id="inspectionTable">
+            <h2>Inspection Index</h2>
+            <div class="scrollable-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Inspection Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inspectionTableBody">
+                        <!-- Inspection data will be populated dynamically using JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <button id="openIndex">Add New Inspection</button>
+        <button id="Users">View users</button>
+
+        <section id="inspectionOverview">
+            <h2>Inspection Overview</h2>
+            <input type="text" id="filterInput" placeholder="Filter by location, area, score, etc..." oninput="filterTable()">
+            <div class="scrollable-table">
+                <table id="inspectionTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Area</th>
+                            <th>Finding</th>
+                            <th>Score</th>
+                            <th>Assign to</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be populated dynamically using JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+    </main>
+    <script src="dashboard.js"></script>
+</body>
+</html>

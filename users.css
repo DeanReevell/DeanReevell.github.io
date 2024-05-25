@@ -1,0 +1,63 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+}
+
+.container {
+    width: 100%; /* Full width by default */
+    max-width: 600px; /* Maximum width of the container */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px; /* Adds space around the container */
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.user-card {
+    background-color: #eef;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between; /* Distributes space between user info and buttons */
+    align-items: center;
+}
+
+button {
+    padding: 10px 20px; /* Comfortable padding inside buttons */
+    background: linear-gradient(145deg, #026cd5, #0342a2); /* Gradient background for buttons */
+    color: #fff; /* White text for contrast */
+    border: none; /* Removes default border */
+    border-radius: 5px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    font-size: 16px; /* Readable font size */
+    box-shadow: 2px 2px 5px #babecc, -2px -2px 5px #ffffff; /* Box shadow for depth */
+}
+
+button:hover {
+    background: linear-gradient(145deg, #0342a2, #022f8a); /* Darker gradient on hover for interactive effect */
+}
+form {
+    margin-top: 20px;
+}
+
+input[type="text"], select {
+    width: calc(100% - 22px); /* Adjust width considering padding and border */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

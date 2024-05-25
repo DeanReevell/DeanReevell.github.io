@@ -1,0 +1,201 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures that padding and borders are included in total width and height */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Sets a modern and readable font for the body */
+    background-color: #f0f2f5; /* Light grey background that's easy on the eyes */
+    color: #333; /* Dark grey text for better readability */
+    line-height: 1.6; /* Increases line spacing for better readability */
+}
+
+header {
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Adds a blue gradient background */
+    color: #fff; /* White text color for contrast against the dark background */
+    padding: 20px;
+    text-align: center; /* Centers the header text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds subtle shadow for depth */
+}
+
+main {
+    max-width: 800px; /* Limits the content width for better readability on large screens */
+    margin: 20px auto; /* Centers the main block horizontally and adds vertical spacing */
+    padding: 0 20px; /* Adds padding inside the main block */
+}
+
+section {
+    margin-bottom: 20px; /* Adds spacing between sections */
+    background-color: #fff; /* White background for sections for a clean look */
+    padding: 20px; /* Adds padding inside sections */
+    border-radius: 8px; /* Rounds the corners of the sections */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05), -5px -5px 15px rgba(255, 255, 255, 0.5); /* Neumorphic effect for subtle depth */
+}
+
+h2 {
+    margin-bottom: 10px; /* Adds space below headings */
+}
+
+label {
+    display: block; /* Makes label block level for better control */
+    margin-bottom: 5px; /* Adds space below labels */
+    font-weight: bold; /* Makes label text bold */
+    color: #666; /* Dark gray color for labels for subtle emphasis */
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%; /* Full width to fill container */
+    padding: 10px; /* Comfortable padding inside inputs */
+    margin-bottom: 10px; /* Space below inputs */
+    border: 1px solid #ccc; /* Subtle border around inputs */
+    border-radius: 5px; /* Rounded corners on inputs */
+    font-size: 16px; /* Readable text size */
+    outline: none; /* Removes the default focus outline to customize later */
+    box-shadow: inset 3px 3px 6px #e9e9e9, inset -3px -3px 6px #fff; /* Inset shadows for a soft depth effect */
+}
+
+select {
+    appearance: none; /* Removes default browser styling of dropdown */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>');
+    background-position: right 10px top 50%; /* Positions custom dropdown arrow */
+    background-repeat: no-repeat; /* Prevents repeating the background image */
+    background-size: 20px; /* Specifies the size of the dropdown arrow */
+}
+
+textarea {
+    height: 100px; /* Sets a fixed height for textareas */
+}
+
+button {
+    padding: 10px 20px; /* Comfortable padding inside buttons */
+    background: linear-gradient(145deg, #026cd5, #0342a2); /* Gradient background for buttons */
+    color: #fff; /* White text for contrast */
+    border: none; /* Removes default border */
+    border-radius: 5px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    font-size: 16px; /* Readable font size */
+    box-shadow: 2px 2px 5px #babecc, -2px -2px 5px #ffffff; /* Box shadow for depth */
+}
+
+button:hover {
+    background: linear-gradient(145deg, #0342a2, #022f8a); /* Darker gradient on hover for interactive effect */
+}
+
+ul {
+    list-style-type: none; /* Removes bullet points from lists */
+}
+
+li {
+    background-color: #fff; /* White background for list items */
+    padding: 10px; /* Padding inside list items */
+    margin-bottom: 10px; /* Space between list items */
+    border-radius: 5px; /* Rounded corners for list items */
+    box-shadow: 2px 2px 5px #babecc, -2px -2px 5px #ffffff; /* Soft shadow for depth */
+}
+
+footer {
+    text-align: center; /* Centers footer content */
+    margin-top: 50px; /* Space above the footer */
+    padding: 20px; /* Padding inside the footer */
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color for contrast */
+    border-radius: 8px; /* Rounded corners for the footer */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+/* Styles for the summary table */
+table {
+    width: 100%; /* Full width tables */
+    border-collapse: collapse; /* Collapses borders for a cleaner look */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Light gray border for readability */
+    padding: 8px; /* Padding inside table cells */
+    text-align: left; /* Aligns text to the left */
+}
+
+th {
+    background-color: #f2f2f2; /* Light gray background for headers */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for rows */
+}
+
+tr:hover {
+    background-color: #e6f7ff; /* Light blue background on row hover for interactivity */
+}
+
+/* Optional: Increase table width if constrained within a container */
+main {
+    max-width: 960px; /* Adjust or remove to allow more horizontal space if needed */
+    margin: 20px auto; /* Center the main content block horizontally */
+    padding: 0 20px; /* Padding inside the main content block */
+}
+
+.modal {
+    display: none; /* Hides modal by default */
+    position: fixed; /* Fixes position relative to viewport */
+    z-index: 1; /* Sets stack order, appears above other elements */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Adds scrollbars if needed */
+    background-color: rgba(0,0,0,0.4); /* Semi-transparent background */
+    padding-top: 60px; /* Padding at the top */
+}
+
+.modal-content {
+    background-color: #fefefe; /* White background for modal content */
+    margin: 5% auto; /* Centers modal content vertically and horizontally */
+    padding: 20px; /* Padding inside modal content */
+    border: 1px solid #888; /* Gray border */
+    width: 80%; /* Width of modal content */
+}
+
+.close {
+    color: #aaa; /* Light gray color */
+    float: right; /* Positions close button to the right */
+    font-size: 28px; /* Large font size for better accessibility */
+    font-weight: bold; /* Bold font weight */
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* Changes color to black on hover/focus for better visibility */
+    text-decoration: none; /* Removes underline */
+    cursor: pointer; /* Changes cursor to pointer to indicate clickable */
+}
+
+#inspectionTable {
+    width: 100%; /* Full width for inspection table */
+    border-collapse: collapse; /* Collapses borders between cells */
+}
+
+#inspectionTable, #inspectionTable th, #inspectionTable td {
+    border: 1px solid #ddd; /* Uniform light gray border */
+    padding: 8px; /* Padding inside cells */
+}
+
+#inspectionTable tr:nth-child(even) {background-color: #f2f2f2;} /* Zebra striping for table rows */
+
+
+.scrollable-table {
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .scrollable-table {
+        width: 100%;
+        -webkit-overflow-scrolling: touch; /* Allows inertial scrolling on iOS */
+    }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+    <link rel="stylesheet" href="users.css"> <!-- Link to CSS for styling if needed -->
+</head>
+<body>
+    <div class="container">
+        <!-- Button to go back to the dashboard -->
+    <button type="button" onclick="goToDashboard()">Back to Dashboard</button>
+    <button type="button" id="clearUsers">Clear All Users</button>
+
+
+        <h1>Add or Manage Users</h1>
+        <form id="userForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+
+            <input type="hidden" id="editUserId" value="">
+            <button type="submit">Add User</button>
+        </form>
+
+        <h2>Users List</h2>
+        <div id="usersList">
+            <!-- Users will be listed here in cards -->
+        </div>
+    </div>
+
+    <script src="users.js"></script>
+</body>
+</html>

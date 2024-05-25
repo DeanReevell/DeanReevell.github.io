@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Inspection System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Accessibility Inspection System</h1>
+    </header>
+    <main>
+
+    <!-- Button to go back to the dashboard -->
+    <button type="button" onclick="goToDashboard()">Back to Dashboard</button>
+
+        <!-- Dashboard -->
+        <section id="dashboard">
+            <!-- Dashboard content will be populated dynamically using JavaScript -->
+        </section>
+        
+        <!-- Form for adding inspection data -->
+        <section id="inspectionForm">
+            <h2>Add Inspection Data</h2>
+            <form id="addInspectionForm">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+                <label for="area">Area:</label>
+                <select id="area" name="area" required>
+                    <option value="">Select Area</option>
+                    <option value="Entrance">Entrance</option>
+                    <option value="Reception Area">Reception Area</option>
+                    <option value="Office Cubicles">Office Cubicles</option>
+                    <option value="Conference Room">Conference Room</option>
+                    <option value="Meeting Room">Meeting Room</option>
+                    <option value="Break Room">Break Room</option>
+                    <option value="Restrooms">Restrooms</option>
+                    <option value="Elevator">Elevator</option>
+                    <option value="Stairs">Stairs</option>
+                    <option value="Hallways">Hallways</option>
+                    <option value="Parking Lot">Parking Lot</option>
+                    <option value="Exterior">Exterior</option>
+                    <option value="Other">Other</option>
+                </select>
+                
+                <label for="finding">Finding:</label>
+                <select id="finding" name="finding" required>
+                    <option value="">Select Finding</option>
+                    <option value="General">General</option>
+                    <option value="Signage">Signage</option>
+                    <option value="Parking">Parking</option>
+                    <option value="Internal and External Circulation">Internal and External Circulation</option>
+                    <option value="Floors and Ground Surfaces">Floors and Ground Surfaces</option>
+                    <option value="Doorways, Doors and Handles">Doorways, Doors and Handles</option>
+                    <option value="Changes in Level">Changes in Level</option>
+                    <option value="Ramps">Ramps</option>
+                    <option value="Stairways">Stairways</option>
+                    <option value="Handrails">Handrails</option>
+                    <option value="Lifts">Lifts</option>
+                    <option value="Toilet Facilities">Toilet Facilities</option>
+                    <option value="Auditoriums, Halls and Grandstands">Auditoriums, Halls and Grandstands</option>
+                    <option value="Controls, Switches and Power Points">Controls, Switches and Power Points</option>
+                    <option value="Warning Signals">Warning Signals</option>
+                    <option value="Lighting">Lighting</option>
+                </select>
+                
+                <label for="comment">Comment:</label>
+                <textarea id="comment" name="comment"></textarea>
+                <button type="button" onclick="startSpeechRecognition('comment')">🎤 Speak</button>
+
+                
+                <label for="picture">Picture:</label>
+                <input type="file" id="picture" name="picture" accept="image/*">
+                <button type="button" id="openCamera">Open Camera</button>
+
+                <!-- Camera container -->
+        <div id="cameraContainer"></div>
+                
+                <label for="score">Score:</label>
+                <select id="score" name="score" required>
+                    <option value="">Select Score</option>
+                    <option value="NA">NA</option>
+                    <option value="Fully Compliant">Fully Compliant</option>
+                    <option value="Partially Compliant">Partially Compliant</option>
+                    <option value="Non-Compliant">Non-Compliant</option>
+                </select>
+                
+                <label for="recommendation">Recommendation:</label>
+                <textarea id="recommendation" name="recommendation" required></textarea>
+                <button type="button" onclick="startSpeechRecognition('recommendation')">🎤 Speak</button>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <!-- Display inspection data -->
+        <section id="inspectionData">
+            <h2>Inspection Data</h2>
+            <ul id="inspectionList">
+                <!-- Inspection data will be populated dynamically using JavaScript -->
+            </ul>
+            <!-- Submit all inspections as one -->
+            <button id="submitAll">Submit All Inspections</button>
+
+        </section>
+
+        
+        
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
