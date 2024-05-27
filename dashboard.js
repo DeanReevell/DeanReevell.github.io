@@ -129,6 +129,50 @@ function filterTable() {
     }
 }
 
+////////////////////////////////////////////////////////////////
+
+function getFormattedDate() {
+    const date = new Date();
+    return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+}
+
+document.getElementById('exportToPDF').addEventListener('click', function() {
+    const filterInputValue = document.getElementById('filterInput').value; // Assume there's an input for filtering
+    const formattedDate = getFormattedDate();
+    const filename = `Inspection_Overview_${formattedDate}_${filterInputValue.replace(/\s+/g, '_')}.pdf`;
+
+    const inspectionOverview = document.getElementById('inspectionOverview'); // Target the correct section
+    html2canvas(inspectionOverview, { scale: 2, scrollY: -window.scrollY }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jspdf.jsPDF({
+            orientation: 'portrait', // Set to portrait orientation
+            unit: 'mm',
+            format: 'a4'
+        });
+
+        // Settings for A4 portrait
+        var imgWidth = 190; // approximately the full width of A4 paper in mm
+        var pageHeight = 277;  // adjusted page height considering margins in mm
+        var imgHeight = canvas.height * imgWidth / canvas.width;
+        var heightLeft = imgHeight;
+        var position = 0; // top position of image
+
+        pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        while (heightLeft >= 0) {
+            position = heightLeft - imgHeight; // top position of next page
+            pdf.addPage();
+            pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+        }
+        pdf.save(filename);
+    }).catch(err => {
+        console.error('Error exporting to PDF:', err);
+    });
+});
+
+
 document.getElementById("openIndex").addEventListener("click", function() {
     window.location.href = "index.html";
 });

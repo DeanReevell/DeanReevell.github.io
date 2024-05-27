@@ -69,14 +69,6 @@
                 <textarea id="comment" name="comment"></textarea>
                 <button type="button" onclick="startSpeechRecognition('comment')">🎤 Speak</button>
 
-                
-                <label for="picture">Picture:</label>
-                <input type="file" id="picture" name="picture" accept="image/*">
-                <button type="button" id="openCamera">Open Camera</button>
-
-                <!-- Camera container -->
-        <div id="cameraContainer"></div>
-                
                 <label for="score">Score:</label>
                 <select id="score" name="score" required>
                     <option value="">Select Score</option>
@@ -89,6 +81,13 @@
                 <label for="recommendation">Recommendation:</label>
                 <textarea id="recommendation" name="recommendation" required></textarea>
                 <button type="button" onclick="startSpeechRecognition('recommendation')">🎤 Speak</button>
+
+                <label for="picture">Picture:</label>
+                <input type="file" id="picture" name="picture" accept="image/*">
+                <button type="button" id="openCamera">Open Camera</button>
+
+                <!-- Camera container -->
+                <div id="cameraContainer"></div>
                 
                 <button type="submit">Submit</button>
             </form>

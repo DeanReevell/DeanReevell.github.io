@@ -124,13 +124,19 @@ function openCamera() {
     const cameraContainer = document.getElementById("cameraContainer");
     cameraContainer.innerHTML = ""; // Clear previous content
 
-    // Access the camera stream
-    navigator.mediaDevices.getUserMedia({ video: true })
+    // Define constraints for the media stream to request the back camera
+    const constraints = {
+        video: { facingMode: "environment" } // 'environment' to request the rear camera
+    };
+
+    // Access the camera stream using defined constraints
+    navigator.mediaDevices.getUserMedia(constraints)
         .then(function(stream) {
             // Create video element to display camera stream
             const video = document.createElement("video");
             video.srcObject = stream;
             video.autoplay = true;
+            video.play();
             cameraContainer.appendChild(video);
 
             // Create button to capture picture
@@ -160,12 +166,13 @@ function openCamera() {
         })
         .catch(function(err) {
             console.error("Error accessing the camera: " + err);
+            alert("Could not access the camera. Please check device permissions and camera availability.");
         });
 }
 
-
 // Add event listener to "Open Camera" button
 document.getElementById("openCamera").addEventListener("click", openCamera);
+
 
 // Add event listener to form submission
 document.getElementById("addInspectionForm").addEventListener("submit", handleFormSubmit);
