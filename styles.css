@@ -21,7 +21,7 @@ header {
 }
 
 main {
-    max-width: 800px; /* Limits the content width for better readability on large screens */
+    max-width: 1200px; /* Limits the content width for better readability on large screens */
     margin: 20px auto; /* Centers the main block horizontally and adds vertical spacing */
     padding: 0 20px; /* Adds padding inside the main block */
 }
@@ -135,7 +135,7 @@ tr:hover {
 
 /* Optional: Increase table width if constrained within a container */
 main {
-    max-width: 960px; /* Adjust or remove to allow more horizontal space if needed */
+    max-width: 1200px; /* Adjusted to allow more horizontal space */
     margin: 20px auto; /* Center the main content block horizontally */
     padding: 0 20px; /* Padding inside the main content block */
 }
@@ -190,7 +190,33 @@ main {
 
 .scrollable-table {
     overflow-x: auto;
+    max-height: 400px; /* Set the maximum height for the scrollable table container */
+    overflow-y: auto; /* Enable vertical scrolling */
     margin: 10px 0;
+}
+
+/* Custom scrollbars for tables */
+#inspectionTable .scrollable-table::-webkit-scrollbar,
+#inspectionOverview .scrollable-table::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Height of the scrollbar */
+}
+
+#inspectionTable .scrollable-table::-webkit-scrollbar-track,
+#inspectionOverview .scrollable-table::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+    border-radius: 10px; /* Round the corners of the scrollbar track */
+}
+
+#inspectionTable .scrollable-table::-webkit-scrollbar-thumb,
+#inspectionOverview .scrollable-table::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Round the corners of the scrollbar thumb */
+}
+
+#inspectionTable .scrollable-table::-webkit-scrollbar-thumb:hover,
+#inspectionOverview .scrollable-table::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker color when hovering over the scrollbar thumb */
 }
 
 @media (max-width: 768px) {
@@ -199,3 +225,195 @@ main {
         -webkit-overflow-scrolling: touch; /* Allows inertial scrolling on iOS */
     }
 }
+
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+}
+
+/* Color coding for user assignments */
+.user-tag {
+    background-color: #4CAF50; /* Green */
+}
+
+/* Color coding for statuses */
+.status-pending {
+    background-color: #FF9800; /* Orange */
+}
+
+.status-in-progress {
+    background-color: #2196F3; /* Blue */
+}
+
+.status-resolved {
+    background-color: #F44336; /* Red */
+}
+
+.status-no-status {
+    background-color: #A9A9A9; /* Dark Gray */
+}
+
+.card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+}
+
+.user-tag {
+    background-color: #4CAF50; /* Green */
+}
+
+.status-pending {
+    background-color: #FF9800; /* Orange */
+}
+
+.status-in-progress {
+    background-color: #2196F3; /* Blue */
+}
+
+.status-resolved {
+    background-color: #F44336; /* Red */
+}
+
+/* Colors for score tags */
+.score-na {
+    background-color: #95A5A6; /* Gray */
+}
+
+.score-fully-compliant {
+    background-color: #27AE60; /* Green */
+}
+
+.score-partially-compliant {
+    background-color: #F1C40F; /* Yellow */
+}
+
+.score-non-compliant {
+    background-color: #C0392B; /* Red */
+}
+
+
+.card h3 {
+    background-color: #2980B9; /* A cool, modern blue */
+    color: white; /* White text for high contrast */
+    font-size: 22px; /* Appropriately sized for main headings */
+    font-weight: bold; /* Bold for emphasis */
+    padding: 10px 15px; /* Padding around the text for a tag-like appearance */
+    border-radius: 8px; /* Rounded corners for a smoother look */
+    display: block; /* Restricts the background to text width */
+    margin-bottom: 15px; /* More space below the heading */
+    margin-top: 5px; /* Spacing above for better visual separation */
+}
+
+.card h4 {
+    background-color: #3498DB; /* A lighter shade of blue for differentiation */
+    color: white; /* White text ensures readability */
+    font-size: 18px; /* Good size for subheadings */
+    font-weight: bold; /* Consistency in font weight */
+    padding: 8px 12px; /* A bit less padding than h3 for hierarchical distinction */
+    border-radius: 6px; /* Slightly less rounded than h3 for visual variance */
+    display: block; /* Keeps background closely wrapped around the text */
+    margin-bottom: 10px; /* Adequate space below for clear separation */
+    margin-top: 3px; /* Small top margin for alignment */
+}
+
+/* Specific revert to default for Inspection Index and Overview headings */
+#inspectionTable h2, #inspectionOverview h2, #inspectionForm h2, #inspectionData h2 {
+    background-color: #3498DB; /* A lighter shade of blue for differentiation */
+    color: white; /* White text ensures readability */
+    font-size: 18px; /* Good size for subheadings */
+    font-weight: bold; /* Consistency in font weight */
+    padding: 8px 12px; /* A bit less padding than h3 for hierarchical distinction */
+    border-radius: 6px; /* Slightly less rounded than h3 for visual variance */
+    display: block; /* Keeps background closely wrapped around the text */
+    margin-bottom: 10px; /* Adequate space below for clear separation */
+    margin-top: 3px; /* Small top margin for alignment */
+}
+
+/* Sidebar styles */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1a1a1a; /* Slightly lighter background for better contrast */
+    padding-top: 80px; /* Move the menu items down a bit */
+    display: block;
+    z-index: 1;
+    transition: 0.3s; /* Smooth transition for sliding */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5); /* Add shadow for depth */
+    overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+.sidebar button {
+    width: calc(100% - 40px); /* Full width with padding */
+    padding: 15px 20px; /* Ensure padding is consistent */
+    text-align: left; /* Align text to the left */
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: background-color 0.3s;
+    border: none;
+    background: none;
+    margin: 5px 20px; /* Add margin between buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    outline: none; /* Remove outline on focus */
+    border-radius: 4px; /* Slightly rounded corners for modern look */
+}
+
+.sidebar button:hover {
+    background-color: #4345bd;
+}
+
+/* Hamburger menu styles */
+#hamburgerMenu {
+    font-size: 30px;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+    color: #1a1a1a; /* Match sidebar color for consistency */
+    background-color: white; /* White background for contrast */
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Shadow for depth */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+#hamburgerMenu:hover {
+    background-color: #4345bd;
+    color: white;
+}
+
+/* Active state for sidebar */
+.sidebar.active {
+    width: 250px;
+}
+
+/* Active state for content */
+.content.active {
+    margin-left: 250px;
+    transition: margin-left 0.3s;
+}
+
+

@@ -1,0 +1,242 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000000;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.button, a.button {
+    display: inline-block;
+    background-color: #f50707;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button:hover, a.button:hover {
+    background-color: #16a085;
+    transform: translateY(-2px);
+}
+
+.button:focus, a.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.5);
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ecf0f1;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card h3 {
+        font-size: 20px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+}
+
+/* Tag styling */
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+}
+
+.user-tag {
+    background-color: #4CAF50; /* Green */
+}
+
+.status-pending {
+    background-color: #FF9800; /* Orange */
+}
+
+.status-in-progress {
+    background-color: #2196F3; /* Blue */
+}
+
+.status-resolved {
+    background-color: #F44336; /* Red */
+}
+
+.score-na {
+    background-color: #95A5A6; /* Gray */
+}
+
+.score-fully-compliant {
+    background-color: #27AE60; /* Green */
+}
+
+.score-partially-compliant {
+    background-color: #F1C40F; /* Yellow */
+}
+
+.score-non-compliant {
+    background-color: #C0392B; /* Red */
+}
+
+/* Headings for cards */
+.card h3 {
+    background-color: #2980B9; /* Blue */
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.card h4 {
+    background-color: #3498DB; /* Lighter blue */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    margin-top: 3px;
+}
+
+/* General styles for the download button */
+.card {
+    position: relative; /* Ensures child elements with absolute positioning are positioned relative to this container */
+}
+
+.download-button {
+    position: absolute;
+    top: 10px; /* Adjusts position from the top inside the card */
+    right: 10px; /* Adjusts position from the right inside the card */
+    width: 30px;
+    height: 30px;
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Circular button */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
+    opacity: 0; /* Button is invisible by default */
+    transition: opacity 0.3s ease; /* Smooth transition for the opacity */
+}
+
+.card:hover .download-button {
+    opacity: 1; /* Button becomes visible when card is hovered */
+}
+
+.download-button::before {
+    content: '';
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.download-button:hover {
+    background-color: #367C39; /* Darker green on hover */
+}
+
+.download-button:focus {
+    outline: none; /* Removes the outline to keep the style clean */
+}
+
+
+

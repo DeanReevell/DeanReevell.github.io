@@ -7,58 +7,87 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>Inspection Dashboard</h1>
     </header>
-    <main>
-        <section id="inspectionTable">
-            <h2>Inspection Index</h2>
-            <div class="scrollable-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Inspection Name</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="inspectionTableBody">
-                        <!-- Inspection data will be populated dynamically using JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
+    
+    <div class="sidebar">
         <button id="openIndex">Add New Inspection</button>
         <button id="Users">View users</button>
         <button id="exportToPDF">Export Data to PDF</button>
+        <button id="viewCharts">View Charts</button>
+    </div>
 
+    <div class="content">
+        <main>
+            <section id="inspectionTable">
+                <h2>Inspection Index</h2>
+                <div class="scrollable-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Inspection Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inspectionTableBody">
+                            <!-- Inspection data will be populated dynamically using JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-        <section id="inspectionOverview">
-            <h2>Inspection Overview</h2>
-            <input type="text" id="filterInput" placeholder="Filter by location, area, score, etc..." oninput="filterTable()">
-            <div class="scrollable-table">
-                <table id="inspectionTable">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Location</th>
-                            <th>Area</th>
-                            <th>Finding</th>
-                            <th>Score</th>
-                            <th>Assign to</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Rows will be populated dynamically using JavaScript -->
-                    </tbody>
-                </table>
+            <div id="summaryCard" class="card">
+                <h3>Dashboard Summary</h3>
+                <div id="userAssignments">
+                    <h4>Assignments by User:</h4>
+                    <div id="assignmentsSummary"></div>
+                </div>
+                <div id="statusSummary">
+                    <h4>Inspection Statuses:</h4>
+                    <div id="statusCounts"></div>
+                </div>
+                <div id="scoreSummary">
+                    <h4>Score:</h4>
+                    <div id="scoreTags"></div>
+                </div>
             </div>
-        </section>
-        
-    </main>
+            
+            <section id="inspectionOverview">
+                <h2>Inspection Overview</h2>
+                <input type="text" id="filterInput" placeholder="Filter by location, area, score, etc..." oninput="filterTable()">
+                <div class="scrollable-table">
+                    <table id="inspectionTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Location</th>
+                                <th>Area</th>
+                                <th>Finding</th>
+                                <th>Score</th>
+                                <th>Assign to</th>
+                                <th>Status</th>
+                                <th>Recommendations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows will be populated dynamically using JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+        </main>
+    </div>
+
+    <div class="hamburger-menu" id="hamburgerMenu">
+        &#9776;
+    </div>
+
     <script src="dashboard.js"></script>
 </body>
 </html>
