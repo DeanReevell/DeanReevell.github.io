@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Cards</title>
+    <link rel="stylesheet" href="job-cards.css">
+</head>
+<body>
+    <header>
+        <h1>Job Cards</h1>
+        <button id="backToDashboard">Back to Dashboard</button>
+    </header>
+    <main>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by location, area, finding, comment, score, or assigned to...">
+            <button onclick="searchJobCards()">Search</button>
+        </div>
+        <div class="filter-container">
+            <div class="date-filter">
+                <label for="startDate">From:</label>
+                <input type="date" id="startDate">
+                <label for="endDate">To:</label>
+                <input type="date" id="endDate">
+                <button onclick="filterByDate()">Filter by Date</button>
+            </div>
+            <div class="quick-filters">
+                <span class="filter-tag" onclick="filterByTag('Pending')">Pending</span>
+                <span class="filter-tag" onclick="filterByTag('In Progress')">In Progress</span>
+                <span class="filter-tag" onclick="filterByTag('Resolved')">Resolved</span>
+                <span class="filter-tag" onclick="filterByTag('Unassigned')">Unassigned</span>
+            </div>
+            <button onclick="clearFilters()">Clear Filters</button>
+        </div>
+        <div class="finding-count-container">
+            <div id="findingCount">Total Findings: 0</div>
+        </div>
+        <div id="jobCardsContainer">
+            <!-- Job cards will be populated here -->
+        </div>
+    </main>
+    <script src="job-cards.js"></script>
+</body>
+</html>

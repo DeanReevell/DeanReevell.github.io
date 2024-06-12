@@ -95,6 +95,13 @@ function populateInspectionOverviewTable() {
 
             const recommendationsCell = row.insertCell(7);
             recommendationsCell.textContent = inspection.recommendation || 'No recommendation'; // New Recommendations Cell
+
+            // Add a button to view job card details
+            const viewButtonCell = row.insertCell(8);
+            const viewButton = document.createElement('button');
+            viewButton.textContent = 'View Details';
+            viewButton.onclick = () => openJobCardDetails(auditIndex, inspectionIndex);
+            viewButtonCell.appendChild(viewButton);
         });
     });
 
@@ -159,6 +166,15 @@ function filterTable() {
         }
         tr[i].style.display = displayRow ? "" : "none";
     }
+}
+
+function openJobCardDetails(auditIndex, findingIndex) {
+    const jobCardData = {
+        auditIndex: auditIndex,
+        findingIndex: findingIndex
+    };
+    localStorage.setItem('currentJobCard', JSON.stringify(jobCardData));
+    window.location.href = 'job-card-details.html';
 }
 
 ////////////////////////////////////////////////////////////////
@@ -298,4 +314,8 @@ document.getElementById("openIndex").addEventListener("click", function() {
 
 document.getElementById("Users").addEventListener("click", function() {
     window.location.href = "users.html";
+});
+
+document.getElementById('viewJobCards').addEventListener('click', () => {
+    window.location.href = 'job-cards.html';
 });
