@@ -112,6 +112,7 @@ function startSpeechRecognition(textareaId) {
 function openCamera() {
     const cameraContainer = document.getElementById('cameraContainer');
     cameraContainer.innerHTML = ""; // Clear previous content
+    cameraContainer.className = 'fullscreen-container'; // Apply full-screen container class
 
     // Define constraints for the media stream to request the back camera
     const constraints = {
@@ -155,6 +156,9 @@ function openCamera() {
                 actionPictureInput.files = dataTransfer.files;
 
                 stream.getTracks().forEach(track => track.stop()); // Stop the camera stream
+
+                // Remove full-screen class after capture
+                cameraContainer.className = '';
             });
             cameraContainer.appendChild(captureButton);
         })
