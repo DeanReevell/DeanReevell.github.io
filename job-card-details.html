@@ -11,14 +11,24 @@
         <h1>Job Card Details</h1>
     </header>
     <main>
-        <button type="button" id="backToDashboard">Back to Dashboard</button>
-        <button type="button" onclick="goToJobcards()">Back to Job Cards</button>
+        <div class="button-container">
+            <button type="button" id="backToDashboard">Back to Dashboard</button>
+            <button type="button" onclick="goToJobcards()">Back to Job Cards</button>
+        </div>
         <div class="card-container">
             <div class="card" id="jobCardDetails">
                 <!-- Job Card Details will be populated here -->
             </div>
             <div class="card" id="actionsTakenCard">
                 <!-- Actions Taken will be populated here -->
+                <h2>Actions Taken</h2>
+                <textarea id="actionsTaken" rows="4" cols="50" placeholder="Describe actions taken..."></textarea>
+                <button type="button" onclick="startSpeechRecognition('actionsTaken')">🎤 Speak</button>
+                <label for="actionPicture"><strong>Upload Action Picture:</strong></label>
+                <input type="file" id="actionPicture" name="actionPicture" accept="image/*">
+                <button type="button" onclick="openCamera()">Open Camera</button>
+                <div id="cameraContainer"></div>
+                <button type="button" onclick="saveJobCardDetails()">Save</button>
             </div>
         </div>
     </main>

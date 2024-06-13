@@ -22,6 +22,12 @@ main {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
 button {
     background-color: #0051ff;
     color: white;
@@ -91,4 +97,17 @@ input[type="file"] {
 
 input[type="file"]:focus {
     border-color: #4CAF50; /* Border color on focus */
+}
+
+/* Mobile-friendly styles */
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .card-container {
+        flex-direction: column;
+        gap: 10px;
+    }
 }

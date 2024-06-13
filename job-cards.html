@@ -12,25 +12,27 @@
         <button id="backToDashboard">Back to Dashboard</button>
     </header>
     <main>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search by location, area, finding, comment, score, or assigned to...">
-            <button onclick="searchJobCards()">Search</button>
-        </div>
-        <div class="filter-container">
-            <div class="date-filter">
-                <label for="startDate">From:</label>
-                <input type="date" id="startDate">
-                <label for="endDate">To:</label>
-                <input type="date" id="endDate">
-                <button onclick="filterByDate()">Filter by Date</button>
+        <div class="search-filter-card">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button onclick="searchJobCards()">Search</button>
             </div>
-            <div class="quick-filters">
-                <span class="filter-tag" onclick="filterByTag('Pending')">Pending</span>
-                <span class="filter-tag" onclick="filterByTag('In Progress')">In Progress</span>
-                <span class="filter-tag" onclick="filterByTag('Resolved')">Resolved</span>
-                <span class="filter-tag" onclick="filterByTag('Unassigned')">Unassigned</span>
+            <div class="filter-container">
+                <div class="date-filter">
+                    <label for="startDate">From:</label>
+                    <input type="date" id="startDate">
+                    <label for="endDate">To:</label>
+                    <input type="date" id="endDate">
+                    <button onclick="filterByDate()">Filter by Date</button>
+                </div>
+                <div class="quick-filters">
+                    <span class="filter-tag" onclick="filterByTag('Pending')">Pending</span>
+                    <span class="filter-tag" onclick="filterByTag('In Progress')">In Progress</span>
+                    <span class="filter-tag" onclick="filterByTag('Resolved')">Resolved</span>
+                    <span class="filter-tag unassigned-tag" onclick="filterByTag('Unassigned')">Unassigned</span>
+                    <button class="clear-filters" onclick="clearFilters()">Clear Filters</button>
+                </div>
             </div>
-            <button onclick="clearFilters()">Clear Filters</button>
         </div>
         <div class="finding-count-container">
             <div id="findingCount">Total Findings: 0</div>
