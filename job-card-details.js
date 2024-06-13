@@ -150,7 +150,9 @@ function openCamera() {
 
                 // Save the captured picture
                 const actionPictureInput = document.getElementById('actionPicture');
-                actionPictureInput.files = new FileList([new File([pictureData], "captured.png")]);
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(new File([dataURItoBlob(pictureData)], "captured.png"));
+                actionPictureInput.files = dataTransfer.files;
 
                 stream.getTracks().forEach(track => track.stop()); // Stop the camera stream
             });
@@ -160,4 +162,21 @@ function openCamera() {
             console.error("Error accessing the camera: " + err);
             alert("Could not access the camera. Please check device permissions and camera availability.");
         });
+}
+
+// Convert base64/URLEncoded data component to raw binary data held in a string
+function dataURItoBlob(dataURI) {
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], { type: mimeString });
 }
