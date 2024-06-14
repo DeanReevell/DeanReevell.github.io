@@ -132,16 +132,33 @@ function openCamera() {
     // Access the camera stream using defined constraints
     navigator.mediaDevices.getUserMedia(constraints)
         .then(function(stream) {
+            // Create full-screen camera container
+            const fullScreenContainer = document.createElement("div");
+            fullScreenContainer.id = "fullScreenContainer";
+            fullScreenContainer.style.position = "fixed";
+            fullScreenContainer.style.top = "0";
+            fullScreenContainer.style.left = "0";
+            fullScreenContainer.style.width = "100%";
+            fullScreenContainer.style.height = "100%";
+            fullScreenContainer.style.backgroundColor = "rgba(0,0,0,0.8)";
+            fullScreenContainer.style.zIndex = "9999";
+            fullScreenContainer.style.display = "flex";
+            fullScreenContainer.style.flexDirection = "column";
+            fullScreenContainer.style.justifyContent = "center";
+            fullScreenContainer.style.alignItems = "center";
+
             // Create video element to display camera stream
             const video = document.createElement("video");
             video.srcObject = stream;
             video.autoplay = true;
-            video.play();
-            cameraContainer.appendChild(video);
+            video.style.width = "100%";
+            video.style.height = "auto";
+            fullScreenContainer.appendChild(video);
 
             // Create button to capture picture
             const captureButton = document.createElement("button");
             captureButton.textContent = "Capture Picture";
+            captureButton.style.marginTop = "20px";
             captureButton.addEventListener("click", function() {
                 const canvas = document.createElement("canvas");
                 const context = canvas.getContext("2d");
@@ -159,10 +176,24 @@ function openCamera() {
                 const recommendation = document.getElementById("recommendation").value;
                 saveInspectionData({ location, area, finding, comment, score, recommendation, picture: pictureData });
                 displayInspectionData(); // Display inspection data with the new picture
-                cameraContainer.innerHTML = ""; // Clear camera container after capturing picture
-                stream.getTracks().forEach(track => track.stop()); // Stop camera stream
+
+                // Stop camera stream and close full-screen container
+                stream.getTracks().forEach(track => track.stop());
+                fullScreenContainer.remove();
             });
-            cameraContainer.appendChild(captureButton);
+            fullScreenContainer.appendChild(captureButton);
+
+            // Create button to close camera
+            const closeButton = document.createElement("button");
+            closeButton.textContent = "Close Camera";
+            closeButton.style.marginTop = "10px";
+            closeButton.addEventListener("click", function() {
+                stream.getTracks().forEach(track => track.stop());
+                fullScreenContainer.remove();
+            });
+            fullScreenContainer.appendChild(closeButton);
+
+            document.body.appendChild(fullScreenContainer);
         })
         .catch(function(err) {
             console.error("Error accessing the camera: " + err);
@@ -172,7 +203,6 @@ function openCamera() {
 
 // Add event listener to "Open Camera" button
 document.getElementById("openCamera").addEventListener("click", openCamera);
-
 
 // Add event listener to form submission
 document.getElementById("addInspectionForm").addEventListener("submit", handleFormSubmit);
@@ -201,7 +231,6 @@ function submitAllInspections() {
     // Redirect to dashboard
     window.location.href = "dashboard.html";
 }
-
 
 // Add event listener to "Submit All Inspections" button
 document.getElementById("submitAll").addEventListener("click", submitAllInspections);
@@ -237,4 +266,3 @@ function startSpeechRecognition(textareaId) {
         alert('Your browser does not support Speech Recognition.');
     }
 }
-
