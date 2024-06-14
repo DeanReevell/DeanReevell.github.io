@@ -123,6 +123,7 @@ function deleteInspection(index) {
 function openCamera() {
     const cameraContainer = document.getElementById("cameraContainer");
     cameraContainer.innerHTML = ""; // Clear previous content
+    cameraContainer.classList.add("fullscreen");
 
     // Define constraints for the media stream to request the back camera
     const constraints = {
@@ -142,19 +143,6 @@ function openCamera() {
             // Create button to capture picture
             const captureButton = document.createElement("button");
             captureButton.textContent = "Capture Picture";
-            captureButton.style.position = "fixed";
-            captureButton.style.bottom = "20px";
-            captureButton.style.left = "50%";
-            captureButton.style.transform = "translateX(-50%)";
-            captureButton.style.padding = "10px 20px";
-            captureButton.style.fontSize = "16px";
-            captureButton.style.backgroundColor = "#0051ff";
-            captureButton.style.color = "white";
-            captureButton.style.border = "none";
-            captureButton.style.borderRadius = "5px";
-            captureButton.style.cursor = "pointer";
-            captureButton.style.zIndex = "10"; // Ensure the button is on top of the video
-
             captureButton.addEventListener("click", function() {
                 const canvas = document.createElement("canvas");
                 const context = canvas.getContext("2d");
@@ -173,19 +161,21 @@ function openCamera() {
                 saveInspectionData({ location, area, finding, comment, score, recommendation, picture: pictureData });
                 displayInspectionData(); // Display inspection data with the new picture
                 cameraContainer.innerHTML = ""; // Clear camera container after capturing picture
+                cameraContainer.classList.remove("fullscreen");
                 stream.getTracks().forEach(track => track.stop()); // Stop camera stream
             });
-
             cameraContainer.appendChild(captureButton);
         })
         .catch(function(err) {
             console.error("Error accessing the camera: " + err);
             alert("Could not access the camera. Please check device permissions and camera availability.");
+            cameraContainer.classList.remove("fullscreen"); // Hide camera container on error
         });
 }
 
 // Add event listener to "Open Camera" button
 document.getElementById("openCamera").addEventListener("click", openCamera);
+
 
 // Add event listener to form submission
 document.getElementById("addInspectionForm").addEventListener("submit", handleFormSubmit);
@@ -250,4 +240,3 @@ function startSpeechRecognition(textareaId) {
         alert('Your browser does not support Speech Recognition.');
     }
 }
-
