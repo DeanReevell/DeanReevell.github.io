@@ -142,6 +142,19 @@ function openCamera() {
             // Create button to capture picture
             const captureButton = document.createElement("button");
             captureButton.textContent = "Capture Picture";
+            captureButton.style.position = "fixed";
+            captureButton.style.bottom = "20px";
+            captureButton.style.left = "50%";
+            captureButton.style.transform = "translateX(-50%)";
+            captureButton.style.padding = "10px 20px";
+            captureButton.style.fontSize = "16px";
+            captureButton.style.backgroundColor = "#0051ff";
+            captureButton.style.color = "white";
+            captureButton.style.border = "none";
+            captureButton.style.borderRadius = "5px";
+            captureButton.style.cursor = "pointer";
+            captureButton.style.zIndex = "10"; // Ensure the button is on top of the video
+
             captureButton.addEventListener("click", function() {
                 const canvas = document.createElement("canvas");
                 const context = canvas.getContext("2d");
@@ -162,6 +175,7 @@ function openCamera() {
                 cameraContainer.innerHTML = ""; // Clear camera container after capturing picture
                 stream.getTracks().forEach(track => track.stop()); // Stop camera stream
             });
+
             cameraContainer.appendChild(captureButton);
         })
         .catch(function(err) {
@@ -172,7 +186,6 @@ function openCamera() {
 
 // Add event listener to "Open Camera" button
 document.getElementById("openCamera").addEventListener("click", openCamera);
-
 
 // Add event listener to form submission
 document.getElementById("addInspectionForm").addEventListener("submit", handleFormSubmit);
